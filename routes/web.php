@@ -18,5 +18,6 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard/users', function () {
+
     return view('dashboard');
 });
