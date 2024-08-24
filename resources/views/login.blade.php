@@ -1,11 +1,7 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  @vite('resources/css/app.css')
-</head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
+@extends('components.layout')
+
+@section('content')
+<div class="bg-gray-100 flex items-center justify-center h-screen">
 
     <div class="w-full  bg-white shadow-lg rounded-lg overflow-hidden flex">
 
@@ -16,11 +12,12 @@
             <div class="bg-white shadow-xl rounded-lg p-10 max-w-md w-full absolute">
                 <h2 class="text-2xl font-bold text-gray-700 mb-6 text-center">Login</h2>
 
-                <form method="POST" action="">
-                    <!-- Email Field -->
+                <form method="POST" action={{ route('login.store') }}>
+                    @csrf
+                    <!-- Name Field -->
                     <div class="mb-4">
-                        <label for="email" class="block text-gray-700">Email</label>
-                        <input id="email" type="email" name="email" required autofocus
+                        <label for="name" class="block text-gray-700">Usuário</label>
+                        <input id="name" type="text" name="name" required autofocus
                             class="w-full p-3 mt-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
 
@@ -57,6 +54,6 @@
         </div>
 
     </div>
+</div>
+@endsection
 
-</body>
-</html>
