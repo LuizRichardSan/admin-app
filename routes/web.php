@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductsController;
 
 
 /*
@@ -18,13 +19,25 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
 
 Route::controller(LoginController::class)->group(function () {
     Route::get('/login', 'index')->name('login.index');
     Route::post('/login/store', 'store')->name('login.store');
-    Route::get('/destroy', 'logout')->name('');
+    Route::get('/destroy', 'logout')->name('login.logout');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+// Rotas protegidas pelo middleware auth
+Route::middleware(['admin'])->group(function () {
+    Route::get('/', function() {
+        return redirect()->route('dashboard');
+    });
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
+});
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', function() {
+        return redirect()->route('dashboard');
+    });
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
