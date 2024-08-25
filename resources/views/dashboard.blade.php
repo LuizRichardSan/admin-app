@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }} h-full">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-      @vite('resources/css/app.css')
-      
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
-        <!-- Styles -->
-    </head>
-
-
-<body class="m-0 p-0 box-border h-full" >
+    
+@extends('components.layout')
+@section('content')
     <header class=" bg-blue-400 p-0.1 flex justify-between items-center">
         <div class="info-header text-white flex w-18 p-3 gap-4 hover:text-opacity-70">
             <div class="logo">
@@ -39,6 +22,10 @@
                     mail
             </span>
             <x-logo size="w-24"/>
+
+            <div class="dropdown-menu" id="dropdownMenu">
+                <a href="#">Logout</a>
+            </div>
         </div>
     </header>
 
@@ -63,16 +50,44 @@
             <hr>         
         </div> <!-- /.sidebar -->
         
-        <div class=" bg-gray-300 w-full p-2 ">
-            <div class="items-center">
-                <h2 class="font-bold text-white text-xl">Dashboard Sale</h2>
+        <div class="content bg-gray-300 w-full p-2 ">
+            <div class="items-center bg-white p-3 rounded-md">
+                <h2 class="font-bold text-black text-xl pt-2">Dashboard Sale</h2>
                 <br/>
-                <hr/>
-                <p><span class="material-icons mt-2">home /</span>Mi Dashboard</p>
+                <hr class="h-0.4 bg-black"/>
+               <div class="flex" >
+                    <span class="material-icons text-blue-500 pt-2">home</span>
+                    <p class="text-black text-base pt-2">  Pasteis da Mi</p>
+               </div>
+            </div>
+
+            <div class="box-info flex justify-around w-full mt-2">
+                <div class="flex items-center gap-2">
+                    <span class="material-icons text-blue-500">
+                        trending_up
+                    </span>
+                    <p class="text-black text-base">Novos pedidos</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="material-icons text-blue-500">
+                        local_mall
+                    </span>
+                    <p class="text-black text-base">Clientes ativos</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="material-icons text-blue-500">
+                        monetization_on
+                    </span>
+                    <p class="text-black text-base">Receita total</p>
+                </div>
+            </div>
             </div>
         </div>
     </section>
 
+    
 
-    </body>
-</html>
+</div>
+@endsection
+
+
