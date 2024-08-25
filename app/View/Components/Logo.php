@@ -8,13 +8,14 @@ use Illuminate\View\Component;
 
 class Logo extends Component
 {
-    public $logo;
+    public $size;
 
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($size = 'w-32')
     {
+        $this->size = $size;
     }
 
     /**
