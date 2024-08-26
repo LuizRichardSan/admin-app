@@ -71,26 +71,29 @@
                </div>
             </div>
 
-            <div class="box-info flex justify-around w-full mt-2">
-                <div class="flex items-center gap-2">
-                    <span class="material-icons text-blue-500">
+            <div class="box-info flex justify-around w-full mt-2 gap-2">
+                <div class="flex items-center gap-2 bg-gradient-to-r from-red-600 to bg-red-400 w-full p-7 rounded-md ">
+                    <span class="material-icons text-red-700">
                         trending_up
                     </span>
-                    <p class="text-black text-base">Novos pedidos</p>
+                    <p class="text-white text-base">Novos pedidos</p>
                 </div>
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2 bg-gradient-to-r from-blue-700 to bg-blue-400 w-full p-7 rounded-md">
                     <span class="material-icons text-blue-500">
                         local_mall
                     </span>
-                    <p class="text-black text-base">Clientes ativos</p>
+                    <p class="text-white text-base">Clientes ativos</p>
                 </div>
-                <div class="flex items-center gap-2">
-                    <span class="material-icons text-blue-500">
+                <div class="flex items-center gap-2 bg-gradient-to-r from-green-600 to bg-green-400 w-full p-7 rounded-md">
+                    <span class="material-icons text-green-700">
                         monetization_on
                     </span>
-                    <p class="text-black text-base">Receita total</p>
+                    <p class="text-white text-base">Receita total</p>
                 </div>
             </div>
+
+            <div class="feed">
+                
             </div>
         </div>
     </section>
