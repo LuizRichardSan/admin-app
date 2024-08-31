@@ -33,6 +33,9 @@ Route::middleware(['admin'])->group(function () {
     });
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
+    Route::post('/products/create', [ProductsController::class, 'create'])->name('products.create');
+    Route::delete('/products/destroy/{id}', [ProductsController::class, 'destroy'])->name('products.destroy');
+    Route::put('/products/{product}', [ProductsController::class, 'update'])->name('products.update');
 });
 
 Route::middleware(['auth'])->group(function () {
