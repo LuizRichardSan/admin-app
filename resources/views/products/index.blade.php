@@ -3,7 +3,7 @@
 @section('content')
 
 <x-nav-bar />
-    <div class="container mx-auto  mt-20">
+    <div class="container mx-auto  mt-20 bg-white">
  @if(session('error'))
     <div class="bg-green-500 text-white p-4 rounded-lg">
         {{ session('error') }}
@@ -11,13 +11,15 @@
 @endif
         <div class="flex justify-between items-center mb-4">
             <h1 class="text-2xl font-bold">Produtos</h1>
-            <button id="open-sidebar" class="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800">
+            <x-button title="Adicionar novo produto" id="open-sidebar"/>
+
+            {{-- <button id="open-sidebar" class="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800">
                 Adicionar novo produto
-            </button>
+            </button> --}}
         </div>
 
         <div class="mb-4">
-            <input type="text" placeholder="Buscar..." class="w-full p-2 border rounded-lg">
+            <input type="text" placeholder="Buscar..." class="w-full bg-white p-2 border rounded-lg">
         </div>
 
         <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
@@ -78,19 +80,18 @@
                 <input type="hidden" id="form-method" name="_method" value="POST"> <!-- Campo oculto para simular PUT -->
                 <div class="mb-4">
                     <label for="name" class="block text-gray-700">Nome</label>
-                    <input type="text" name="name" id="name" required class="w-full p-2 border rounded-lg">
+                    <input type="text" name="name" id="name" required class="w-full p-2 border rounded-lg bg-white">
                 </div>
                 <div class="mb-4">
                     <label for="quantity" class="block text-gray-700">Quantidade</label>
-                    <input type="number" name="quantity" id="quantity" required class="w-full p-2 border rounded-lg">
+                    <input type="number" name="quantity" id="quantity" required class="w-full p-2 border rounded-lg bg-white">
                 </div>
                 <div class="mb-4">
                     <label for="price" class="block text-gray-700">Preço</label>
-                    <input type="text" name="price" id="price" required class="w-full p-2 border rounded-lg">
+                    <input type="text" name="price" id="price" required class="w-full p-2 border rounded-lg bg-white">
                 </div>
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
-                    Criar
-                </button>
+                <x-button title="Criar"/>
+
             </form>
 
         </div>

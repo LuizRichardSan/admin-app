@@ -6,7 +6,7 @@
     <div class="w-full  bg-white shadow-lg rounded-lg overflow-hidden flex">
 
         <!-- Left side: Login Form -->
-        <div class="w-1/2 h-screen p-8 flex items-center justify-center relative">
+        <div class="w-1/2 h-screen p-8 flex bg-white items-center justify-center relative">
 
             <!-- Modal surrounding the login form -->
             <div class="bg-white shadow-xl rounded-lg p-10 max-w-md w-full absolute">
@@ -19,7 +19,7 @@
                     <div class="mb-2">
                         <label for="name" class="block text-gray-700">Usuário</label>
                         <input id="name" type="text" name="name"
-                            class="w-full p-3 mt-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            class="w-full bg-white p-3 mt-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-700">
                         </div>
                         @error('name')
                         <div class="py-0.5"><p class=" text-red-500  text-center ">{{$message}}</p></div>
@@ -27,7 +27,7 @@
                     <div class="mb-6">
                         <label for="password" class="block text-gray-700">Senha</label>
                         <input id="password" type="password" name="password"
-                            class="w-full p-3 mt-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            class="w-full bg-white p-3 mt-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-700">
                     </div>
                     @error('password')
                     <div class="py-0.5"><p class=" text-red-500  text-center">{{$message}}</p></div>
@@ -35,7 +35,7 @@
 
                     <!-- Remember Me -->
                     <div class="mb-2 flex items-center">
-                        <input type="checkbox" name="remember" id="remember" class="mr-2">
+                        <input type="checkbox" name="remember" id="remember" class="mr-2 focus:ring-gray-900">
                         <label for="remember" class="text-gray-600">Lembrar-me</label>
                     </div>
                     <!-- Submit Button -->

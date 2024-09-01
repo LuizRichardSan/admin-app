@@ -1,8 +1,12 @@
-    <header class=" bg-gray-900 p-0.1 flex justify-between items-center z-40 shadow-sm px-10">
-        <div class="info-header text-white  flex w-18 p-3 gap-10 hover:text-opacity-70">
+<header class="bg-{{$settings->primary_color ?? 'gray-900' }} p-0.1 flex justify-between items-center z-40 shadow-sm px-10">
+    <div class="info-header text-white  flex w-18 p-3 gap-10 hover:text-opacity-70">
             <div class="logo">
                 <h3 class="font-bold cursor-pointer text-lg text-white"><a href="{{route('dashboard')}}">
-                    Sistema Nexos
+                    @if ($settings->company_name)
+                        {{ $settings->company_name }}
+                    @else
+                        Sistema Nexos
+                    @endif
                     </a></h3>
             </div>
 
@@ -32,7 +36,7 @@
                         <a href="" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Meu Perfil</a>
                     </li>
                     <li>
-                        <a href="" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Configurações</a>
+                        <a href="{{ route('settings.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Configurações</a>
                     </li>
                     <li>
                         <a href="{{ route('login.logout') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</a>

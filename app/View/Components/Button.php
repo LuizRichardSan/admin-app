@@ -7,15 +7,18 @@ use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use App\Models\Setting;
 
-
-class NavBar extends Component
+class Button extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public $title;
+    public $id;
+
+    public function __construct($title = 'Botão', $id = null)
     {
-        //
+        $this->title = $title;
+        $this->id = $id;
     }
 
     /**
@@ -24,7 +27,6 @@ class NavBar extends Component
     public function render(): View|Closure|string
     {
         $settings = Setting::first();
-
-        return view('components.nav-bar', compact('settings'));
+        return view('components.button', compact('settings'));
     }
 }

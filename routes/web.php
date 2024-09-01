@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\SettingsController;
 
 
 /*
@@ -36,6 +37,10 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/products/create', [ProductsController::class, 'create'])->name('products.create');
     Route::delete('/products/destroy/{id}', [ProductsController::class, 'destroy'])->name('products.destroy');
     Route::put('/products/{product}', [ProductsController::class, 'update'])->name('products.update');
+
+    //Configurações do sistema
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+    Route::put('/settings/update', [SettingsController::class, 'update'])->name('settings.update');
 });
 
 Route::middleware(['auth'])->group(function () {
