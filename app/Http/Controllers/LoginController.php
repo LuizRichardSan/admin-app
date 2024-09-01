@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Setting;
+
 
 class LoginController extends Controller
 {
@@ -13,7 +15,9 @@ class LoginController extends Controller
             return redirect()->route('dashboard');
         }
 
-        return view('login');
+        $settings = Setting::first();
+
+        return view('login', compact('settings'));
     }
 
     public function store(Request $request) {

@@ -41,7 +41,7 @@
                     <!-- Submit Button -->
                     <div>
                         <button type="submit"
-                                class="w-full bg-gray-900 text-white p-3 rounded-lg hover:bg-gray-800 focus:outline-none focus:bg-blue-600">
+                                class="w-full bg-{{$settings->primary_color ?? 'gray-900'}} text-white p-3 rounded-lg hover:bg-opacity-90 focus:outline-none focus:bg-blue-600">
                             Entrar
                         </button>
                     </div>
@@ -51,7 +51,7 @@
         </div>
 
         <!-- Right side: Blue Section -->
-        <div class="w-1/2 min-h-screen bg-gray-900 flex items-center justify-center">
+        <div class="w-1/2 min-h-screen bg-{{$settings->primary_color ?? 'gray-900'}} flex items-center justify-center">
             <div class="text-white text-center">
                 <x-logo size="w-32"/>
             </div>
