@@ -31,7 +31,6 @@
                     <th class="py-2 px-2 bg-gray-100 w-1/5">Quantidade</th>
                     <th class="py-2 px-2 bg-gray-100 w-1/5">Preço</th>
                     <th class="py-2 px-2 bg-gray-100 w-1/5">Ações</th>
-
                 </tr>
             </thead>
             <tbody>
@@ -91,7 +90,6 @@
                     <input type="text" name="price" id="price" required class="w-full p-2 border rounded-lg bg-white">
                 </div>
                 <x-button title="Criar"/>
-
             </form>
 
         </div>
