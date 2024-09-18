@@ -12,11 +12,15 @@
 
             <div class="menus flex gap-5 text-white">
                 <h3>
+                    @if ($settings->type === 'produto')
                     <a href="{{route('products.index')}}">Produtos</a>
+                    @else
+                    <a href="{{route('products.index')}}">Serviços</a>
+                    @endif
                 </h3>
 
                 <h3>
-                    <a href="">Categorias</a>
+                    <a href="{{route('category.index')}}">Categorias</a>
                 </h3>
            </div>
         </div>

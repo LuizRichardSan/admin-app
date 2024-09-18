@@ -41,7 +41,7 @@
                     <!-- Submit Button -->
                     <div>
                         <button type="submit"
-                                class="w-full bg-{{$settings->primary_color ?? 'gray-900'}} text-white p-3 rounded-lg hover:bg-opacity-90 focus:outline-none focus:bg-blue-600">
+                                class="w-full bg-{{$settings->primary_color ?? 'gray-900'}} text-white p-3 rounded-lg hover:bg-opacity-90 focus:outline-none focus:bg-opacity-50">
                             Entrar
                         </button>
                     </div>

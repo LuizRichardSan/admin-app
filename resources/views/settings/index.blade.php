@@ -18,7 +18,6 @@
             @method('PUT') <!-- Adicione este campo para alterar o método para PUT -->
 
 
-            <!-- Configuração da Logo -->
             <div class="mb-6">
                 <label for="company_name" class="block text-gray-700">Nome da Empresa</label>
                 <input type="text" name="company_name" id="company_name" value="{{ $settings->company_name ?? '' }}" class="w-full p-2 border rounded-lg">
