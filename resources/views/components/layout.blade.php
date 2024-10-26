@@ -13,6 +13,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <!-- Vite - CSS -->
     @vite('resources/css/app.css')
 
@@ -27,9 +28,10 @@
             @yield('content')
         </main>
 
-
+    </div>
     <!-- Vite - JavaScript -->
     @vite('resources/js/app.js')
+    <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
 </body>
 </html>

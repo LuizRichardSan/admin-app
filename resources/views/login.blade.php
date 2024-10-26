@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="bg-gray-100 flex items-center justify-center h-screen">
-
     <div class="w-full  bg-white shadow-lg rounded-lg overflow-hidden flex">
 
         <!-- Left side: Login Form -->

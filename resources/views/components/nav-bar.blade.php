@@ -22,6 +22,12 @@
                 <h3>
                     <a href="{{route('category.index')}}">Categorias</a>
                 </h3>
+                @if ($settings->type === 'produto')
+
+                <h3>
+                    <a href="{{route('sell.index')}}">Fazer Pedido</a>
+                </h3>
+                @endif
            </div>
         </div>
 
