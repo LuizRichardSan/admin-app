@@ -6,7 +6,8 @@
 
 import './bootstrap';
 import { createApp } from 'vue';
-
+import route from 'ziggy-js';
+import { Ziggy } from './ziggy';
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
@@ -15,9 +16,18 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
+app.config.globalProperties.route = (name, params, absolute, config = Ziggy) => route(name, params, absolute, config);
+
+
+
 import ExampleComponent from './components/ExampleComponent.vue';
 app.component('example-component', ExampleComponent);
 
+import Logo from './components/Logo.vue';
+app.component('logo-component', Logo);
+
+import NavBar from './components/NavBar.vue';
+app.component('navbar-component', NavBar);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

@@ -11,14 +11,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- Vite - CSS -->
     @vite('resources/css/app.css')
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Adiciona as rotas Ziggy -->
+    @routes
 </head>
 <body>
     <div id="app">
@@ -28,12 +30,10 @@
             @yield('content')
         </main>
 
-    </div>
+    </div> <!-- Certifique-se de fechar a div #app aqui -->
+
     <!-- Vite - JavaScript -->
     @vite('resources/js/app.js')
-    <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
 </body>
 </html>
-
-

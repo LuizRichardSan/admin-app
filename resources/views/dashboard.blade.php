@@ -2,7 +2,7 @@
 @extends('components.layout')
 @section('content')
 
-    <x-nav-bar />
+    <navbar-component></navbar-component>
                           <!-- FIM HEADER -->
     <section class="flex">
         <x-left-sidebar />
