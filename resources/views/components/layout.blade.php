@@ -20,7 +20,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Adiciona as rotas Ziggy -->
-    @routes
+    
 </head>
 <body>
     <div id="app">
