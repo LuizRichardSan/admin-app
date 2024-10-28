@@ -19,8 +19,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Adiciona as rotas Ziggy -->
-    
 </head>
 <body>
     <div id="app">

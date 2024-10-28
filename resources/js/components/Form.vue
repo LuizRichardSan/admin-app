@@ -1,43 +1,36 @@
 <template>
-    <div class="flex items-center justify-center min-h-screen bg-gray-100 p-4">
-  
-      <!-- Modal surrounding the login form -->
-      <div class="bg-white shadow-xl rounded-lg p-8 max-w-md w-full">
-        <h2 class="text-2xl font-bold text-gray-700 mb-6 text-center">Login</h2>
-  
-        <form method="POST" :action="this.route('login.store')">
           <!-- Name Field -->
           <div class="mb-2">
             <label for="name" class="block text-gray-700">Usuário</label>
             <input id="name" type="text" name="name"
               class="w-full bg-white p-3 mt-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-700">
           </div>
-  
+
           <!-- Password Field -->
           <div class="mb-6">
             <label for="password" class="block text-gray-700">Senha</label>
             <div class="relative">
-              <input 
+              <input
                 :type="passwordVisible ? 'text' : 'password'"
                 id="password"
                 name="password"
                 class="w-full bg-white p-3 mt-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-700"
               />
               <!-- Ícone do olho para mostrar/esconder senha -->
-              <span @click="togglePassword" class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer">
+              <span @click="togglePassword" class="absolute top-1/2 right-3 cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
                   <path :d="passwordVisible ? visibleIcon : hiddenIcon" />
                 </svg>
               </span>
             </div>
           </div>
-  
+
           <!-- Remember Me -->
           <div class="mb-2 flex items-center">
             <input type="checkbox" name="remember" id="remember" class="mr-2 focus:ring-gray-900">
             <label for="remember" class="text-gray-600">Lembrar-me</label>
           </div>
-  
+
           <!-- Submit Button -->
           <div>
             <button type="submit"
@@ -45,11 +38,9 @@
               Entrar
             </button>
           </div>
-        </form>
-      </div>
-    </div>
+
   </template>
-  
+
   <script>
   export default {
     data() {
@@ -75,8 +66,7 @@
     },
   };
   </script>
-  
+
   <style scoped>
   /* Estilos adicionais, se necessário */
   </style>
-  
