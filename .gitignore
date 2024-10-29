@@ -17,3 +17,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+./whatsapp-bot/node_modules
+./whatsapp-bot/tokens
