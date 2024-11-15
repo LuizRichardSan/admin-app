@@ -10,6 +10,8 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SellController;
+use App\Http\Controllers\PerguntasRespostasController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +58,15 @@ Route::middleware(['admin'])->group(function () {
 
     //sell
     Route::get('/sell', [SellController::class, 'sell'])->name('sell.index');
+
+    //bot
+    Route::get('/whatsapp/qrcode', [PerguntasRespostasController::class, 'showQRCode'])->name('whatsapp.qrcode');
+    Route::get('/whatsapp/qr', [PerguntasRespostasController::class, 'iniciarBot']);
+    Route::get('/whatsapp/iniciar', [PerguntasRespostasController::class, 'iniciarSessao']);
+    Route::get('/whatsapp/deslogar', [PerguntasRespostasController::class, 'deslogar']);
+    Route::get('/whatsapp/fetch-qr', [PerguntasRespostasController::class, 'fetchQRCode']);
+
+
 });
 
 Route::middleware(['auth'])->group(function () {
