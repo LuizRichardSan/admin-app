@@ -11,7 +11,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\PerguntasRespostasController;
-use App\Http\Controllers\CatalogoController
+use App\Http\Controllers\CatalogoController;
 
 
 /*
