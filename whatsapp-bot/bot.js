@@ -5,27 +5,38 @@ const QRCode = require('qrcode');
 const app = express();
 const PORT = 3000;
 let qrCodeCache; // Variável para armazenar o QR code gerado
-
+let sessionStatus = 'disconnected'; // Status inicial da sessão
 
 let client; // Variável para armazenar a instância do cliente
 
 
 // Endpoint para iniciar a sessão
-app.get('/start-session', async (req, res) => {
-    try {
-        client = await wppconnect.create({
-            session: 'sessionName',
-            catchQR: (base64Qrimg) => {
-                console.log('QR Code gerado');
-                qrCodeCache = base64Qrimg; // Armazena o QR Code base64 diretamente
-            },
-            autoClose: 60000,
+app.get('/start-session', (req, res) => {
+    create({
+        session: 'sessionName',
+        statusFind: (statusSession, session) => {
+            console.log('Status da Sessão:', statusSession);
+            sessionStatus = statusSession; // Atualiza o status da sessão globalmente
+        },
+        catchQR: (base64Qrimg) => {
+            console.log('QR Code gerado');
+            qrCodeCache = base64Qrimg; // Armazena o QR Code base64
+        },
+        autoClose: 60000,
+    })
+        .then((clientInstance) => {
+            client = clientInstance;
+            start(client);
         })
-        start(client); // Chama a função de inicialização com a instância atualizada
-        res.status(200).json({ message: 'Sessão iniciada com sucesso!' });
-    } catch (error) {
-        res.status(500).send('Erro ao iniciar a sessão: ' + error);
-    }
+        .catch((error) => console.error('Erro ao iniciar sessão:', error));
+
+    // Responde imediatamente, mesmo que a inicialização ainda esteja em andamento
+    res.status(200).json({ message: 'Sessão iniciando em segundo plano.' });
+});
+
+// Endpoint para obter o status da sessão
+app.get('/session-status', (req, res) => {
+    res.status(200).json({ status: sessionStatus });
 });
 
 // Endpoint para deslogar
@@ -46,18 +57,13 @@ app.get('/logout', async (req, res) => {
 
 // Função para obter o QR Code
 app.get('/whatsapp/qr', (req, res) => {
-    if (!qrCodeCache && !client) {
-        return res.status(500).send('QR Code ainda não gerado.');
-    } else if (client) {
-        return res.send(`
-        <div>
-`);;
+    if (!qrCodeCache) {
+        return res.status(202).send('QR code ainda está sendo processado.');
     }
-    const qrImage = `<img id="qrcode" src="${qrCodeCache}" alt="QR Code">`;
-    res.send(`
-                ${qrImage}
-    `);
+    // Serve o QR code diretamente do cache
+    res.status(200).send(`<img id="qrcode" src="${qrCodeCache}" alt="QR Code">`);
 });
+
 
 function start(client) {
     client.onMessage((message) => {

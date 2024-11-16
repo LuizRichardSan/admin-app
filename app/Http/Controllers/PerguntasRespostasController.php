@@ -33,11 +33,17 @@ class PerguntasRespostasController extends Controller
             return view('botWpp.index', ['qrCodeHtml' => 'Carregando QR code...']);
         }
 
-    public function iniciarSessao()
-    {
-        $response = Http::get('http://localhost:3000/start-session');
-        return response()->json(['message' => $response->body()]);
-    }
+        public function iniciarSessao()
+        {
+            try {
+                // Faz a chamada assíncrona ao Node.js
+                Http::get('http://localhost:3000/start-session');
+                // Retorna resposta imediata ao frontend
+                return response()->json(['message' => 'Sessão iniciada em segundo plano.']);
+            } catch (\Exception $e) {
+                return response()->json(['message' => 'Erro ao iniciar sessão.'], 500);
+            }
+        }
 
     public function deslogar()
     {
@@ -56,4 +62,25 @@ class PerguntasRespostasController extends Controller
     // Retorna o HTML do QR code diretamente
     return $response->body();
 }
+
+public function verificarStatus()
+{
+    $response = Http::get('http://localhost:3000/session-status');
+
+    if ($response->successful()) {
+        $status = $response->json()['status'];
+
+        if ($status === 'isLogged' || $status === 'inChat') {
+            return response()->json(['status' => 'connected']);
+        }
+
+        return response()->json(['status' => $status]);
+    }
+
+    return response()->json(['status' => 'erro'], 500);
+}
+
+ public function TelaAdmin() {
+    return view('botWpp.admin.index');
+ }
 }

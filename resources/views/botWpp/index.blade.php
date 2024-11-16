@@ -39,13 +39,32 @@
 @endsection
 
 <script>
-    function iniciarSessao() {
-        fetch('/whatsapp/iniciar')
+  function iniciarSessao() {
+    // Inicia a sessão
+    fetch('/whatsapp/iniciar')
         .then(response => response.json())
-        .then(data => alert(data.message))
-        .catch(error => console.error('Erro:', error));
-    document.getElementById("qrModal").classList.remove("hidden");
-    mostrarQRCode();
+        .then(() => {
+            document.getElementById("qrModal").classList.remove("hidden");
+            mostrarQRCode();
+            monitorarStatus();
+        })
+        .catch(error => console.error('Erro ao iniciar a sessão:', error));
+}
+
+iniciarSessao();
+
+function monitorarStatus() {
+    const intervaloStatus = setInterval(() => {
+        fetch('/whatsapp/verificar-status')
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'connected') {
+                    clearInterval(intervaloStatus); // Para o monitoramento
+                    window.location.href = '/whatsapp/admin'; // Redireciona para outra tela
+                }
+            })
+            .catch(error => console.error('Erro ao obter status da sessão:', error));
+    }, 2000); // Faz polling a cada 2 segundos
 }
 
 function fecharModal() {
@@ -60,19 +79,24 @@ function deslogar() {
 }
 
 function mostrarQRCode() {
-    const intervalo = setInterval(() => {
-        fetch('/whatsapp/fetch-qr') // Usa a mesma rota para AJAX
-            .then(response => response.text()) // Recebe a resposta como texto HTML
+    const fetchQRCode = () => {
+        fetch('/whatsapp/fetch-qr')
+            .then(response => response.text())
             .then(html => {
                 const qrCodeContainer = document.getElementById('qrcodeContainer');
-                qrCodeContainer.innerHTML = html; // Atualiza o modal com o QR code
+                qrCodeContainer.innerHTML = html;
 
-                // Verifica se o QR code foi carregado, assumindo que a imagem tem a tag <img>
+                // Se o QR code estiver carregado, para de chamar novamente
                 if (html.includes('<img')) {
-                    clearInterval(intervalo); // Para o intervalo se o QR code estiver disponível
+                    console.log('QR code carregado com sucesso!');
+                } else {
+                    console.log('QR code ainda não disponível, tentando novamente...');
+                    setTimeout(fetchQRCode, 3000); // Tenta novamente após 10 segundos
                 }
             })
             .catch(error => console.error('Erro ao obter QR code:', error));
-    }, 10000);  // Tenta atualizar a cada 3 segundos
-    }
+    };
+
+    fetchQRCode(); // Chamada inicial
+}
 </script>

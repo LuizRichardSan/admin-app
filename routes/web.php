@@ -65,6 +65,8 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/whatsapp/iniciar', [PerguntasRespostasController::class, 'iniciarSessao']);
     Route::get('/whatsapp/deslogar', [PerguntasRespostasController::class, 'deslogar']);
     Route::get('/whatsapp/fetch-qr', [PerguntasRespostasController::class, 'fetchQRCode']);
+    Route::get('/whatsapp/verificar-status', [PerguntasRespostasController::class, 'verificarStatus']);
+    Route::get('/whatsapp/admin', [PerguntasRespostasController::class, 'TelaAdmin'])->name('whatsapp.admin');
 
 
 });
