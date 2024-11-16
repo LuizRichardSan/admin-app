@@ -11,6 +11,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\PerguntasRespostasController;
+use App\Http\Controllers\CatalogoController
 
 
 /*
@@ -68,6 +69,8 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/whatsapp/verificar-status', [PerguntasRespostasController::class, 'verificarStatus']);
     Route::get('/whatsapp/admin', [PerguntasRespostasController::class, 'TelaAdmin'])->name('whatsapp.admin');
 
+    //catalogo
+    Route::get('/catalogo', [CatalogoController::class, 'index'])->name('catalogo.index');
 
 });
 
