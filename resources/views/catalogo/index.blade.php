@@ -296,8 +296,8 @@
                     </span>
                     <!-- Botão para Comprar -->
                     <a 
-                        href="#" 
-                        class="bg-blue-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-900 transition">
+                        href="javascript:void(0);"  
+                        class=" bg-blue-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-900 transition" onclick="openModal()">
                         Comprar
                     </a>
                 </footer>
@@ -314,11 +314,58 @@
             </button>
         </div>
 
+
+        <div id="pedidoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+            <div class="bg-white rounded-lg w-11/12 md:w-1/3 p-6">
+                <!-- Cabeçalho -->
+                <div class="flex justify-between items-center border-b pb-3">
+                    <h3 id="modalTitulo" class="text-xl font-semibold">Título do Produto</h3>
+                    <button class="text-gray-500 hover:text-gray-800" onclick="closeModal()">&times;</button>
+                </div>
+                
+                <!-- Corpo -->
+                <div class="mt-4 space-y-4">
+                    <!-- Ingredientes -->
+                    <div>
+                        <h4 class="text-gray-700 font-medium">Ingredientes:</h4>
+                        <p id="modalIngredientes" class="text-gray-600">Lista de ingredientes</p>
+                    </div>
+        
+                    <!-- Preço -->
+                    <div>
+                        <h4 class="text-gray-700 font-medium">Preço:</h4>
+                        <p id="modalPreco" class="text-blue-600 font-semibold text-lg">R$ 0,00</p>
+                    </div>
+                </div>
+                
+                <!-- Rodapé -->
+                <div class="mt-6 flex justify-end space-x-3">
+                    <button onclick="closeModal()" class="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400">Cancelar</button>
+                    <button class="px-4 py-2 bg-blue-800 text-white rounded-lg hover:bg-blue-900">Confirmar Pedido</button>
+                </div>
+            </div>
+        </div>
+        
     </div>
 </div>
-</div>
+
+
+<script>
+    // Abrir o modal
+    function openModal() {
+        document.getElementById('pedidoModal').classList.remove('hidden');
+    }
+
+    // Fechar o modal
+    function closeModal() {
+        document.getElementById('pedidoModal').classList.add('hidden');
+    }
+</script>
 
 @endsection
+
+
+
 
 
 
